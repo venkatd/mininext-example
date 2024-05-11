@@ -1,18 +1,13 @@
-import { url, head, commonHead, cssReset } from "@spirobel/mininext";
-head((mini) => mini.html`<title>hello hello</title>${commonHead}${cssReset}`);
+import { url } from "@spirobel/mininext";
+
+const appScriptTag = url.frontend("/App.tsx");
+
 url.set([
   [
     "/",
     (mini) => {
-      return mini.html`<h1>Hello world</h1>`;
+      return mini.html`<div id="app"></div>${appScriptTag}`;
     },
-  ],
-  [
-    "/bye",
-    (mini) =>
-      mini.html`<h1>Goodbye world</h1>${mini.head(
-        mini.html`<title>bye bye</title>${commonHead}`
-      )}`,
   ],
 ]);
 
